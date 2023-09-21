@@ -1,0 +1,188 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:regular);
+@font-face {
+  font-family: "Visby Round Regular";
+  src: url("fonts/VisbyRoundCF-Regular.woff2") format("woff2"),
+    url("fonts/VisbyRoundCF-Regular.woff") format("woff"),
+    url("fonts/VisbyRoundCF-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Visby Round Medium";
+  src: url("fonts/VisbyRoundCF-Medium.woff2") format("woff2"),
+    url("fonts/VisbyRoundCF-Medium.woff") format("woff"),
+    url("fonts/VisbyRoundCF-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Visby Round Bold";
+  src: url("fonts/VisbyRoundCF-Bold.woff2") format("woff2"),
+    url("fonts/VisbyRoundCF-Bold.woff") format("woff"),
+    url("fonts/VisbyRoundCF-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Visby Round Medium", sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 15px 20px;
+
+  @media (max-width: 479.98px) {
+    padding: 60px 15px 20px;
+  }
+}
+
+.title {
+  font-size: 120px;
+  color: rgb(147, 123, 147);
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  &::selection {
+    background-color: rgba(65, 127, 166, 0.5);
+    color: #f0f0f0;
+  }
+
+  @media (max-width: 479.98px) {
+    font-size: 80px;
+  }
+}
+
+.form-row {
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 4px 10px rgba(143, 140, 140, 0.3);
+  &__input {
+    width: 100%;
+    border: none;
+    height: 60px;
+    padding: 16px;
+    font-size: 18px;
+    font-family: inherit;
+    color: #333;
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 10px rgba(102, 67, 102, 0.3);
+      border: 2px solid rgba(168, 73, 168, 0.3);
+      border-radius: 3px;
+    }
+    &::placeholder {
+      color: rgba(51, 51, 51, 0.5);
+    }
+
+    @media (max-width: 479.98px) {
+    }
+  }
+}
+
+.todos {
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+
+  .item-todo {
+    list-style: none;
+    padding: 20px 30px 20px 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-top: 1px solid rgba(102, 102, 102, 0.2);
+    border-radius: 3px;
+
+    &::before {
+      content: "\f111";
+      display: block;
+      font-family: "Font Awesome 5 Free";
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      left: 20px;
+      top: 27px;
+      font-size: 20px;
+    }
+    &:hover &::before {
+      transform: scale(1.1);
+    }
+
+    &__textarea {
+      border: none;
+      font-family: inherit;
+      font-size: 18px;
+      width: 100%;
+      resize: none;
+      background: transparent;
+      overflow: hidden;
+      pointer-events: none;
+      white-space: normal;
+      margin-left: 0;
+      padding-right: 20px;
+
+      &:disabled {
+        color: inherit;
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &.checked {
+      .item-todo__textarea {
+        text-decoration: line-through;
+        color: rgba(51, 51, 51, 0.5);
+      }
+
+      &::before {
+        content: "\f058";
+        color: rgba(51, 51, 51, 0.5);
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    &__button {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s ease;
+      color: #444;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background-color: #777;
+        color: #fff;
+      }
+    }
+
+    &__button.hidden {
+      display: none;
+    }
+  }
+}
